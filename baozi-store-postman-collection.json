@@ -1,0 +1,431 @@
+{
+  "info": {
+    "_postman_id": "baozi-store-collection-v1",
+    "name": "Baozi Store - API REST",
+    "description": "Coleção completa da API REST Baozi Store (Trabalho Desenvolvimento Web Back-End). Inclui CRUD completo para Clientes, Produtos e Pedidos.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "clienteId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "produtoId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "pedidoId",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Clientes",
+      "item": [
+        {
+          "name": "POST - Criar Cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Italo Guilherme Alves Xavier4674875\",\n  \"clienteDesde\": \"2026-10-17\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clientes",
+              "host": ["{{baseUrl}}"],
+              "path": ["clientes"]
+            },
+            "description": "Cria um novo cliente. Retorna 201 Created com o objeto criado."
+          },
+          "response": [
+            {
+              "name": "201 Created",
+              "status": "Created",
+              "code": 201,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "{\n  \"id\": 1,\n  \"nome\": \"Italo Guilherme Alves Xavier4674875\",\n  \"clienteDesde\": \"2026-10-17\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "GET - Listar Clientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/clientes",
+              "host": ["{{baseUrl}}"],
+              "path": ["clientes"]
+            },
+            "description": "Lista todos os clientes cadastrados. Retorna 200 OK com array."
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "status": "OK",
+              "code": 200,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "[\n  {\n    \"id\": 1,\n    \"nome\": \"Italo Guilherme Alves Xavier4674875\",\n    \"clienteDesde\": \"2026-10-17\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "GET - Buscar Cliente por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/clientes/{{clienteId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["clientes", "{{clienteId}}"]
+            },
+            "description": "Busca um cliente pelo ID. Retorna 200 OK ou 404 Not Found."
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "status": "OK",
+              "code": 200,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "{\n  \"id\": 1,\n  \"nome\": \"Italo Guilherme Alves Xavier4674875\",\n  \"clienteDesde\": \"2026-10-17\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "PUT - Atualizar Cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Italo Guilherme Alves Xavier4674875\",\n  \"clienteDesde\": \"2026-10-17\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clientes/{{clienteId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["clientes", "{{clienteId}}"]
+            },
+            "description": "Atualiza os dados de um cliente. Retorna 200 OK com o objeto atualizado."
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "status": "OK",
+              "code": 200,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "{\n  \"id\": 1,\n  \"nome\": \"Italo Guilherme Alves Xavier4674875\",\n  \"clienteDesde\": \"2026-10-17\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "DELETE - Apagar Cliente",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/clientes/{{clienteId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["clientes", "{{clienteId}}"]
+            },
+            "description": "Remove um cliente pelo ID. Retorna 204 No Content ou 404 Not Found."
+          },
+          "response": [
+            {
+              "name": "204 No Content",
+              "status": "No Content",
+              "code": 204,
+              "header": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Produtos",
+      "item": [
+        {
+          "name": "POST - Criar Produto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Baozi de Carne\",\n  \"preco\": 8.50,\n  \"estoque\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produtos",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos"]
+            },
+            "description": "Cria um novo produto. Retorna 201 Created com o objeto criado."
+          },
+          "response": [
+            {
+              "name": "201 Created",
+              "status": "Created",
+              "code": 201,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "{\n  \"id\": 1,\n  \"nome\": \"Baozi de Carne\",\n  \"preco\": 8.50,\n  \"estoque\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "GET - Listar Produtos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produtos",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos"]
+            },
+            "description": "Lista todos os produtos cadastrados. Retorna 200 OK com array."
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "status": "OK",
+              "code": 200,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "[\n  {\n    \"id\": 1,\n    \"nome\": \"Baozi de Carne\",\n    \"preco\": 8.50,\n    \"estoque\": true\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "GET - Buscar Produto por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produtos/{{produtoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos", "{{produtoId}}"]
+            },
+            "description": "Busca um produto pelo ID. Retorna 200 OK ou 404 Not Found."
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "status": "OK",
+              "code": 200,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "{\n  \"id\": 1,\n  \"nome\": \"Baozi de Carne\",\n  \"preco\": 8.50,\n  \"estoque\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "PUT - Atualizar Produto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Baozi de Carne\",\n  \"preco\": 9.00,\n  \"estoque\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produtos/{{produtoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos", "{{produtoId}}"]
+            },
+            "description": "Atualiza os dados de um produto. Retorna 200 OK com o objeto atualizado."
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "status": "OK",
+              "code": 200,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "{\n  \"id\": 1,\n  \"nome\": \"Baozi de Carne\",\n  \"preco\": 9.00,\n  \"estoque\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "DELETE - Apagar Produto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produtos/{{produtoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos", "{{produtoId}}"]
+            },
+            "description": "Remove um produto pelo ID. Retorna 204 No Content ou 404 Not Found."
+          },
+          "response": [
+            {
+              "name": "204 No Content",
+              "status": "No Content",
+              "code": 204,
+              "header": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "POST - Criar Pedido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": 1,\n  \"produtoId\": 1,\n  \"quantidade\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pedidos",
+              "host": ["{{baseUrl}}"],
+              "path": ["pedidos"]
+            },
+            "description": "Cria um novo pedido. Valida que cliente e produto existem. Retorna 201 Created ou 400 Bad Request."
+          },
+          "response": [
+            {
+              "name": "201 Created",
+              "status": "Created",
+              "code": 201,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "{\n  \"id\": 1,\n  \"clienteId\": 1,\n  \"produtoId\": 1,\n  \"quantidade\": 3\n}"
+            }
+          ]
+        },
+        {
+          "name": "GET - Listar Pedidos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pedidos",
+              "host": ["{{baseUrl}}"],
+              "path": ["pedidos"]
+            },
+            "description": "Lista todos os pedidos cadastrados. Retorna 200 OK com array."
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "status": "OK",
+              "code": 200,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "[\n  {\n    \"id\": 1,\n    \"clienteId\": 1,\n    \"produtoId\": 1,\n    \"quantidade\": 3\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "GET - Buscar Pedido por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pedidos/{{pedidoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["pedidos", "{{pedidoId}}"]
+            },
+            "description": "Busca um pedido pelo ID. Retorna 200 OK ou 404 Not Found."
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "status": "OK",
+              "code": 200,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "{\n  \"id\": 1,\n  \"clienteId\": 1,\n  \"produtoId\": 1,\n  \"quantidade\": 3\n}"
+            }
+          ]
+        },
+        {
+          "name": "PUT - Atualizar Pedido",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": 1,\n  \"produtoId\": 1,\n  \"quantidade\": 5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pedidos/{{pedidoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["pedidos", "{{pedidoId}}"]
+            },
+            "description": "Atualiza os dados de um pedido. Retorna 200 OK com o objeto atualizado."
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "status": "OK",
+              "code": 200,
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": "{\n  \"id\": 1,\n  \"clienteId\": 1,\n  \"produtoId\": 1,\n  \"quantidade\": 5\n}"
+            }
+          ]
+        },
+        {
+          "name": "DELETE - Apagar Pedido",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pedidos/{{pedidoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["pedidos", "{{pedidoId}}"]
+            },
+            "description": "Remove um pedido pelo ID. Retorna 204 No Content ou 404 Not Found."
+          },
+          "response": [
+            {
+              "name": "204 No Content",
+              "status": "No Content",
+              "code": 204,
+              "header": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
